@@ -12,7 +12,7 @@ namespace CasFiniteStateSample
         protected override void CacheMetadata(CodeActivityMetadata metadata)
         {
             if (RuleNumber < 0)
-                metadata.AddValidationError("Rulen umber must not be negative");
+                metadata.AddValidationError("Rule number must not be negative");
             if (RuleNumber == 0)
                 metadata.AddValidationError("Pease enter a rule number");
         }

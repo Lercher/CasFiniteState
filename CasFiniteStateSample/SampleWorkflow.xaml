@@ -48,7 +48,7 @@
                 <State.Transitions>
                   <Transition DisplayName="Accept" sap2010:WorkflowViewState.IdRef="Transition_3">
                     <Transition.Trigger>
-                      <local:CasRule sap2010:WorkflowViewState.IdRef="CasRule_1" RuleNumber="4711" />
+                      <local:CasRule sap2010:WorkflowViewState.IdRef="CasRule_1" RuleNumber="477" />
                     </Transition.Trigger>
                     <Transition.To>
                       <State x:Name="__ReferenceID2" DisplayName="Accepted" sap2010:WorkflowViewState.IdRef="State_3">
@@ -101,7 +101,7 @@
     <x:Reference>__ReferenceID2</x:Reference>
     <x:Reference>__ReferenceID4</x:Reference>
     <x:Reference>__ReferenceID5</x:Reference>
-    <sads:DebugSymbol.Symbol>d0REOlxEYXRlblxHaXRcQ2FzRmluaXRlU3RhdGVcQ2FzRmluaXRlU3RhdGVTYW1wbGVcU2FtcGxlV29ya2Zsb3cueGFtbAsmA2kSAgEBKAdaDwIBET4nPpUBAgEPLw9WFwIBCzYXRh8CAQg6H0InAgEFThdSHwIBAioLKm4CARQzFzNmAgEOSxdLZQIBDSpXKmsCARU=</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d0REOlxEYXRlblxHaXRcQ2FzRmluaXRlU3RhdGVcQ2FzRmluaXRlU3RhdGVTYW1wbGVcU2FtcGxlV29ya2Zsb3cueGFtbAsmA2kSAgEBKAdaDwIBET4nPpUBAgEPLw9WFwIBCzYXRh8CAQg6H0InAgEFThdSHwIBAioLKm4CARQzFzNlAgEOSxdLZQIBDSpXKmsCARU=</sads:DebugSymbol.Symbol>
   </StateMachine>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -154,12 +154,13 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Transition_3" sap:VirtualizedContainerService.HintSize="431.333333333333,522">
+      <sap2010:ViewStateData Id="Transition_3" sap:VirtualizedContainerService.HintSize="430.666666666667,250.666666666667">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:PointCollection x:Key="ConnectorLocation">127,333.066666666667 157,333.066666666667 157,332.266666666667 283,332.266666666667</av:PointCollection>
             <x:Int32 x:Key="SrcConnectionPointIndex">40</x:Int32>
             <x:Int32 x:Key="DestConnectionPointIndex">53</x:Int32>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
