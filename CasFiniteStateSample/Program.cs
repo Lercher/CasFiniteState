@@ -10,8 +10,8 @@ namespace CasFiniteStateSample
     {
         static void Main(string[] args)
         {
-            Activity workflow1 = new Workflow1();
-            WorkflowInvoker.Invoke(workflow1);
+            Activity wf = new SampleWorkflow();
+            WorkflowInvoker.Invoke(wf);
         }
     }
 }
