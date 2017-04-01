@@ -1,6 +1,7 @@
 ﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="CasFiniteStateSample.SampleWorkflow" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap2010:WorkflowViewState.IdRef="CasFiniteStateSample.SampleWorkflow_1"
  xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
  xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:local="clr-namespace:CasFiniteStateSample"
  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
  xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
  xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
@@ -19,72 +20,93 @@
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
     <sco:Collection x:TypeArguments="AssemblyReference">
-      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
       <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>System.Core</AssemblyReference>
       <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
       <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>CasFiniteStateSample</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <StateMachine InitialState="{x:Reference __ReferenceID5}" DisplayName="Sample Workflow with Autojumps" sap2010:WorkflowViewState.IdRef="StateMachine_1">
-    <State x:Name="__ReferenceID5" DisplayName="Initial" sap2010:WorkflowViewState.IdRef="State_6">
-      <State.Transitions>
-        <Transition DisplayName="Make Proposal" sap2010:WorkflowViewState.IdRef="Transition_6">
-          <Transition.To>
-            <State x:Name="__ReferenceID2" DisplayName="Proposal" sap2010:WorkflowViewState.IdRef="State_5">
-              <State.Transitions>
-                <Transition DisplayName="Accept" sap2010:WorkflowViewState.IdRef="Transition_3">
-                  <Transition.To>
-                    <State x:Name="__ReferenceID1" DisplayName="Accepted" sap2010:WorkflowViewState.IdRef="State_3">
-                      <State.Transitions>
-                        <Transition DisplayName="Transfer to back" sap2010:WorkflowViewState.IdRef="Transition_2">
-                          <Transition.To>
-                            <State x:Name="__ReferenceID3" DisplayName="Transferred" sap2010:WorkflowViewState.IdRef="State_2">
-                              <State.Transitions>
-                                <Transition DisplayName="Close" sap2010:WorkflowViewState.IdRef="Transition_1">
-                                  <Transition.To>
-                                    <State x:Name="__ReferenceID0" DisplayName="Final" sap2010:WorkflowViewState.IdRef="State_1" IsFinal="True" />
-                                  </Transition.To>
-                                </Transition>
-                              </State.Transitions>
-                            </State>
-                          </Transition.To>
-                        </Transition>
-                      </State.Transitions>
-                    </State>
-                  </Transition.To>
-                </Transition>
-                <Transition DisplayName="Decline" sap2010:WorkflowViewState.IdRef="Transition_5">
-                  <Transition.To>
-                    <State x:Name="__ReferenceID4" DisplayName="Declined" sap2010:WorkflowViewState.IdRef="State_4">
-                      <State.Transitions>
-                        <Transition DisplayName="Close" sap2010:WorkflowViewState.IdRef="Transition_4" To="{x:Reference __ReferenceID0}" />
-                      </State.Transitions>
-                    </State>
-                  </Transition.To>
-                </Transition>
-              </State.Transitions>
-            </State>
-          </Transition.To>
-        </Transition>
-      </State.Transitions>
-    </State>
+  <StateMachine DisplayName="Sample Workflow with Autojumps" sap2010:WorkflowViewState.IdRef="StateMachine_1">
+    <StateMachine.InitialState>
+      <State x:Name="__ReferenceID1" DisplayName="Initial" sap2010:WorkflowViewState.IdRef="State_6">
+        <State.Entry>
+          <local:CasStartTask sap2010:WorkflowViewState.IdRef="CasStartTask_1" TaskId="Accquire-deal-data" />
+        </State.Entry>
+        <State.Transitions>
+          <Transition DisplayName="Make Proposal" sap2010:WorkflowViewState.IdRef="Transition_6">
+            <Transition.To>
+              <State x:Name="__ReferenceID3" DisplayName="Proposal" sap2010:WorkflowViewState.IdRef="State_5">
+                <State.Transitions>
+                  <Transition DisplayName="Accept" sap2010:WorkflowViewState.IdRef="Transition_3">
+                    <Transition.Trigger>
+                      <local:CasRule sap2010:WorkflowViewState.IdRef="CasRule_1" RuleNumber="4711" />
+                    </Transition.Trigger>
+                    <Transition.To>
+                      <State x:Name="__ReferenceID2" DisplayName="Accepted" sap2010:WorkflowViewState.IdRef="State_3">
+                        <State.Transitions>
+                          <Transition DisplayName="Transfer to back" sap2010:WorkflowViewState.IdRef="Transition_2">
+                            <Transition.To>
+                              <State x:Name="__ReferenceID4" DisplayName="Transferred" sap2010:WorkflowViewState.IdRef="State_2">
+                                <State.Transitions>
+                                  <Transition DisplayName="Close" sap2010:WorkflowViewState.IdRef="Transition_1">
+                                    <Transition.To>
+                                      <State x:Name="__ReferenceID0" DisplayName="Final" sap2010:WorkflowViewState.IdRef="State_1" IsFinal="True" />
+                                    </Transition.To>
+                                  </Transition>
+                                </State.Transitions>
+                              </State>
+                            </Transition.To>
+                          </Transition>
+                        </State.Transitions>
+                      </State>
+                    </Transition.To>
+                  </Transition>
+                  <Transition DisplayName="Decline" sap2010:WorkflowViewState.IdRef="Transition_5">
+                    <Transition.Trigger>
+                      <local:CasRule sap2010:WorkflowViewState.IdRef="CasRule_2" RuleNumber="224" />
+                    </Transition.Trigger>
+                    <Transition.To>
+                      <State x:Name="__ReferenceID5" DisplayName="Declined" sap2010:WorkflowViewState.IdRef="State_4">
+                        <State.Transitions>
+                          <Transition DisplayName="Close" sap2010:WorkflowViewState.IdRef="Transition_4" To="{x:Reference __ReferenceID0}" />
+                        </State.Transitions>
+                      </State>
+                    </Transition.To>
+                  </Transition>
+                </State.Transitions>
+              </State>
+            </Transition.To>
+          </Transition>
+        </State.Transitions>
+      </State>
+    </StateMachine.InitialState>
+    <x:Reference>__ReferenceID1</x:Reference>
     <State DisplayName="Autojumps" sap2010:WorkflowViewState.IdRef="State_7">
       <State.Transitions>
-        <Transition DisplayName="Immediate Accept" sap2010:WorkflowViewState.IdRef="Transition_7" To="{x:Reference __ReferenceID1}" />
+        <Transition DisplayName="Immediate Accept" sap2010:WorkflowViewState.IdRef="Transition_7" To="{x:Reference __ReferenceID2}" />
         <Transition DisplayName="Terminate immediatly" sap2010:WorkflowViewState.IdRef="Transition_8" To="{x:Reference __ReferenceID0}" />
       </State.Transitions>
     </State>
     <x:Reference>__ReferenceID0</x:Reference>
-    <x:Reference>__ReferenceID2</x:Reference>
-    <x:Reference>__ReferenceID1</x:Reference>
     <x:Reference>__ReferenceID3</x:Reference>
+    <x:Reference>__ReferenceID2</x:Reference>
     <x:Reference>__ReferenceID4</x:Reference>
-    <sads:DebugSymbol.Symbol>d0REOlxEYXRlblxHaXRcQ2FzRmluaXRlU3RhdGVcQ2FzRmluaXRlU3RhdGVTYW1wbGVcU2FtcGxlV29ya2Zsb3cueGFtbAceA1USAgEBHwVIDQIBEC8lL5MBAgEOIw1EFQIBCycVNx0CAQgrHTMlAgEFPBVAHQIBAg==</sads:DebugSymbol.Symbol>
+    <x:Reference>__ReferenceID5</x:Reference>
+    <sads:DebugSymbol.Symbol>d0REOlxEYXRlblxHaXRcQ2FzRmluaXRlU3RhdGVcQ2FzRmluaXRlU3RhdGVTYW1wbGVcU2FtcGxlV29ya2Zsb3cueGFtbAsmA2kSAgEBKAdaDwIBET4nPpUBAgEPLw9WFwIBCzYXRh8CAQg6H0InAgEFThdSHwIBAioLKm4CARQzFzNmAgEOSxdLZQIBDSpXKmsCARU=</sads:DebugSymbol.Symbol>
   </StateMachine>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="CasStartTask_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="CasRule_1" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="State_1" sap:VirtualizedContainerService.HintSize="114,61.3333333333333">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -132,7 +154,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Transition_3">
+      <sap2010:ViewStateData Id="Transition_3" sap:VirtualizedContainerService.HintSize="431.333333333333,522">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:PointCollection x:Key="ConnectorLocation">127,333.066666666667 157,333.066666666667 157,332.266666666667 283,332.266666666667</av:PointCollection>
@@ -141,6 +163,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CasRule_2" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="Transition_4">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -159,12 +182,13 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Transition_5">
+      <sap2010:ViewStateData Id="Transition_5" sap:VirtualizedContainerService.HintSize="430.666666666667,250.666666666667">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:PointCollection x:Key="ConnectorLocation">70,360.666666666667 70,390.666666666667 210,390.666666666667 210,479.333333333333</av:PointCollection>
             <x:Int32 x:Key="SrcConnectionPointIndex">39</x:Int32>
             <x:Int32 x:Key="DestConnectionPointIndex">38</x:Int32>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
@@ -177,7 +201,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Transition_6">
+      <sap2010:ViewStateData Id="Transition_6" sap:VirtualizedContainerService.HintSize="431.333333333333,522">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:PointCollection x:Key="ConnectorLocation">64.3,200.666666666667 64.3,230.666666666667 75.7,230.666666666667 75.7,299.333333333333</av:PointCollection>
