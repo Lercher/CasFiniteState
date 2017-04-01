@@ -52,7 +52,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <XamlAppDef Include="Workflow1.xaml">
+    <XamlAppDef Include="SampleWorkflow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </XamlAppDef>
