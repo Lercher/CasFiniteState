@@ -5,13 +5,16 @@ using System.Activities.Statements;
 
 namespace CasFiniteStateSample
 {
-
     class Program
     {
         static void Main(string[] args)
         {
             Activity wf = new SampleWorkflow();
             var app = new WorkflowApplication(wf);
+
+            // http://blogs.msmvps.com/theproblemsolver/2011/01/07/doing-synchronous-workflow-execution-using-the-workflowapplication/
+            // app.SynchronizationContext = new SynchronousSynchronizationContext();
+
             app.Run();
             while (true)
             {
@@ -53,11 +56,11 @@ namespace CasFiniteStateSample
                 }
                 catch (Exception ex)
                 {
+                    app.Abort();
                     Console.Write("{0}. Press return to quit ... ", ex.Message);
                     Console.ReadLine();
                     return;
                 }
-
             }
         }
     }

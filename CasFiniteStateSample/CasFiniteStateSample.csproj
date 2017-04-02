@@ -53,6 +53,7 @@
     <Compile Include="CasStartTask.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SynchronousSynchronizationContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <XamlAppDef Include="SampleWorkflow.xaml">
