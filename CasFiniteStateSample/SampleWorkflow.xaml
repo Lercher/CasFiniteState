@@ -39,12 +39,18 @@
     <StateMachine.InitialState>
       <State x:Name="__ReferenceID1" DisplayName="Initial" sap2010:WorkflowViewState.IdRef="State_6">
         <State.Entry>
-          <local:CasStartTask sap2010:WorkflowViewState.IdRef="CasStartTask_1" TaskId="Accquire-deal-data" />
+          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+            <local:CasAdvertiseEvent EventId="Create-Proposal" sap2010:WorkflowViewState.IdRef="CasAdvertiseEvent_1" />
+            <local:CasStartTask sap2010:WorkflowViewState.IdRef="CasStartTask_1" TaskId="Accquire-deal-data" />
+          </Sequence>
         </State.Entry>
         <State.Transitions>
           <Transition DisplayName="Make Proposal" sap2010:WorkflowViewState.IdRef="Transition_6">
             <Transition.To>
               <State x:Name="__ReferenceID3" DisplayName="Proposal" sap2010:WorkflowViewState.IdRef="State_5">
+                <State.Entry>
+                  <local:CasAdvertiseEvent EventId="Enter-decision" sap2010:WorkflowViewState.IdRef="CasAdvertiseEvent_2" />
+                </State.Entry>
                 <State.Transitions>
                   <Transition DisplayName="Accept" sap2010:WorkflowViewState.IdRef="Transition_3">
                     <Transition.Trigger>
@@ -52,10 +58,16 @@
                     </Transition.Trigger>
                     <Transition.To>
                       <State x:Name="__ReferenceID2" DisplayName="Accepted" sap2010:WorkflowViewState.IdRef="State_3">
+                        <State.Entry>
+                          <local:CasAdvertiseEvent EventId="Transfer-to-back" sap2010:WorkflowViewState.IdRef="CasAdvertiseEvent_3" />
+                        </State.Entry>
                         <State.Transitions>
                           <Transition DisplayName="Transfer to back" sap2010:WorkflowViewState.IdRef="Transition_2">
                             <Transition.To>
                               <State x:Name="__ReferenceID4" DisplayName="Transferred" sap2010:WorkflowViewState.IdRef="State_2">
+                                <State.Entry>
+                                  <local:CasAdvertiseEvent EventId="Close-Deal" sap2010:WorkflowViewState.IdRef="CasAdvertiseEvent_4" />
+                                </State.Entry>
                                 <State.Transitions>
                                   <Transition DisplayName="Close" sap2010:WorkflowViewState.IdRef="Transition_1">
                                     <Transition.To>
@@ -76,6 +88,9 @@
                     </Transition.Trigger>
                     <Transition.To>
                       <State x:Name="__ReferenceID5" DisplayName="Declined" sap2010:WorkflowViewState.IdRef="State_4">
+                        <State.Entry>
+                          <local:CasAdvertiseEvent EventId="Close-deal" sap2010:WorkflowViewState.IdRef="CasAdvertiseEvent_5" />
+                        </State.Entry>
                         <State.Transitions>
                           <Transition DisplayName="Close" sap2010:WorkflowViewState.IdRef="Transition_4" To="{x:Reference __ReferenceID0}" />
                         </State.Transitions>
@@ -101,12 +116,23 @@
     <x:Reference>__ReferenceID2</x:Reference>
     <x:Reference>__ReferenceID4</x:Reference>
     <x:Reference>__ReferenceID5</x:Reference>
-    <sads:DebugSymbol.Symbol>d0REOlxEYXRlblxHaXRcQ2FzRmluaXRlU3RhdGVcQ2FzRmluaXRlU3RhdGVTYW1wbGVcU2FtcGxlV29ya2Zsb3cueGFtbAsmA2kSAgEBKAdaDwIBET4nPpUBAgEPLw9WFwIBCzYXRh8CAQg6H0InAgEFThdSHwIBAioLKm4CARQzFzNlAgEOSxdLZQIBDSpXKmsCARU=</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d0REOlxEYXRlblxHaXRcQ2FzRmluaXRlU3RhdGVcQ2FzRmluaXRlU3RhdGVTYW1wbGVcU2FtcGxlV29ya2Zsb3cueGFtbBEmA3gSAgEBKAdpDwIBFUonSpUBAgETMg9lFwIBDjwXUh8CAQpDH04nAgEGWhdhHwIBAioLLRYCARg0EzR9AgESORc5ZQIBEVcXV2UCARA+Gz6HAQIBDUUjRYkBAgEJXBtcgQECAQUrDSt4AgEbLA0scAIBGSxZLG0CARo=</sads:DebugSymbol.Symbol>
   </StateMachine>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="CasAdvertiseEvent_1" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="CasStartTask_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="222,208">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CasAdvertiseEvent_2" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="CasRule_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="CasAdvertiseEvent_3" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="CasAdvertiseEvent_4" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="State_1" sap:VirtualizedContainerService.HintSize="114,61.3333333333333">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -165,6 +191,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="CasRule_2" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="CasAdvertiseEvent_5" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="Transition_4">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -174,7 +201,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="State_4" sap:VirtualizedContainerService.HintSize="114,61.3333333333333">
+      <sap2010:ViewStateData Id="State_4" sap:VirtualizedContainerService.HintSize="326.666666666667,481.333333333333">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">153,479.333333333333</av:Point>
@@ -193,7 +220,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="State_5" sap:VirtualizedContainerService.HintSize="114,61.3333333333333">
+      <sap2010:ViewStateData Id="State_5" sap:VirtualizedContainerService.HintSize="326.666666666667,510.666666666667">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">13,299.333333333333</av:Point>

@@ -48,6 +48,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CasAdvertiseEvent.cs" />
     <Compile Include="CasRule.cs" />
     <Compile Include="CasStartTask.cs" />
     <Compile Include="Program.cs" />

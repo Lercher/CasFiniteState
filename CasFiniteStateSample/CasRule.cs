@@ -15,6 +15,7 @@ namespace CasFiniteStateSample
                 metadata.AddValidationError("Rule number must not be negative");
             if (RuleNumber == 0)
                 metadata.AddValidationError("Pease enter a rule number");
+            base.CacheMetadata(metadata);
         }
 
         protected override void Execute(CodeActivityContext context)
@@ -27,5 +28,4 @@ namespace CasFiniteStateSample
             return string.Format("On rule R{0}", RuleNumber);
         }
     }
-        
 }
