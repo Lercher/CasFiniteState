@@ -15,35 +15,47 @@ namespace CasFiniteStateSample
             app.Run();
             while (true)
             {
-                System.Threading.Thread.Sleep(250);
+                System.Threading.Thread.Sleep(100);
                 try
                 {
                     var bms = app.GetBookmarks();
                     Console.WriteLine();
                     Console.WriteLine();
-                    Console.Write("[");
+                    var n = 0;
                     foreach (var bm in bms)
                     {
-                        Console.Write(" {0} ", bm.BookmarkName);
+                        n++;
+                        Console.Write("[{1} {0}] ", bm.BookmarkName, n);
                     }
-                    Console.Write("] ");
+                    Console.Write("q-quit, 1-5. Enter command: ");
+                    var l = Console.ReadLine();
+                    switch (l.Trim().ToLowerInvariant())
+                    {
+                        case "q":
+                            app.Abort();
+                            return;
+                        case "1":
+                            app.ResumeBookmark(bms[0].BookmarkName, null);
+                            break;
+                        case "2":
+                            app.ResumeBookmark(bms[1].BookmarkName, null);
+                            break;
+                        case "3":
+                            app.ResumeBookmark(bms[2].BookmarkName, null);
+                            break;
+                        case "4":
+                            app.ResumeBookmark(bms[3].BookmarkName, null);
+                            break;
+                        case "5":
+                            app.ResumeBookmark(bms[4].BookmarkName, null);
+                            break;
+                    }
                 }
                 catch (Exception ex)
                 {
                     Console.Write("{0}. Press return to quit ... ", ex.Message);
                     Console.ReadLine();
                     return;
-                }
-                Console.Write("Enter command q-quit, e-trigger event: ");
-                var l = Console.ReadLine();
-                switch(l.Trim().ToLowerInvariant())
-                {
-                    case "q":
-                        app.Abort();
-                        return;
-                    case "e":
-                        app.ResumeBookmark("TriggerEvent", null);
-                        break;
                 }
 
             }
