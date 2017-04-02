@@ -18,7 +18,7 @@ namespace CasFiniteStateSample
         protected override void Execute(NativeActivityContext context)
         {
             Console.WriteLine("Waiting for Event {0} to be triggered", EventId);
-            context.CreateBookmark("TrggerEvent", (ctx, bm, value) => {
+            context.CreateBookmark("TriggerEvent", (ctx, bm, value) => {
                 Console.WriteLine("Event {0} triggered", EventId);
             });
         }
