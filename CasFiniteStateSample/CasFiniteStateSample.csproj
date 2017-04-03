@@ -49,8 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CasAdvertiseEvent.cs" />
+    <Compile Include="CasConsequenceStartTask.cs" />
     <Compile Include="CasRule.cs" />
-    <Compile Include="CasStartTask.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SynchronousSynchronizationContext.cs" />
