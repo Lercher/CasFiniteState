@@ -28,9 +28,9 @@ namespace CasFiniteStateSample
                     foreach (var bm in bms)
                     {
                         n++;
-                        Console.Write("[{1} {0}] ", bm.BookmarkName, n);
+                        Console.WriteLine("[{1} {0}] ", bm.BookmarkName, n);
                     }
-                    Console.Write("q-quit, 1-5. Enter command: ");
+                    Console.Write("Enter 1..{0} or q-quit: ", bms.Count);
                     var l = Console.ReadLine();
                     switch (l.Trim().ToLowerInvariant())
                     {

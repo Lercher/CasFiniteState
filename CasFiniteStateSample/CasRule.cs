@@ -23,7 +23,7 @@ namespace CasFiniteStateSample
         protected override bool CanInduceIdle => true;
         protected override void Execute(NativeActivityContext context)
         {
-            Console.WriteLine("Using rule R{0:n0}", RuleNumber);
+            Console.WriteLine("jump available if rule R{0:n0}", RuleNumber);
             var bmn = string.Format("Rule-{0} / no (more) event", RuleNumber); // preliminary
 
             var parent = ParentOf(this);
@@ -35,7 +35,7 @@ namespace CasFiniteStateSample
                     var to = t.To;
                     var advertisedEvent = to.Entry as CasAdvertiseEvent;
                     if (advertisedEvent != null)
-                        bmn = string.Format("to state {0} with event {1}", to.DisplayName, advertisedEvent.EventId);
+                        bmn = string.Format("->{0,-12} on event {1,-20} only if R{2,-4}", to.DisplayName, advertisedEvent.EventId, RuleNumber);
                 }
             }
 
