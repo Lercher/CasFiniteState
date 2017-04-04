@@ -40,19 +40,22 @@
       <State x:Name="__ReferenceID1" DisplayName="Initial" sap2010:WorkflowViewState.IdRef="State_6">
         <State.Entry>
           <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
-            <local:CasAdvertiseEvent EventId="Create-Proposal" sap2010:WorkflowViewState.IdRef="CasAdvertiseEvent_1" />
-            <local:CasConsequenceStartTask DisplayName="CasConsequenceStartTask" sap2010:WorkflowViewState.IdRef="CasStartTask_1" RuleID="2222" TaskId="Accquire-deal-data" />
+            <local:CasAdvertiseEvent DisplayName="Event Create Proposal" EventId="CREATE-PROPOSAL" sap2010:WorkflowViewState.IdRef="CasAdvertiseEvent_1" />
+            <local:CasConsequenceStartTask DisplayName="StartTask consequence" sap2010:WorkflowViewState.IdRef="CasStartTask_1" RuleID="2222" TaskId="ACCQUIRE-DEAL-DATA" />
           </Sequence>
         </State.Entry>
         <State.Transitions>
           <Transition DisplayName="Make Proposal" sap2010:WorkflowViewState.IdRef="Transition_6">
             <Transition.Trigger>
-              <local:CasRule sap2010:WorkflowViewState.IdRef="CasRule_5" RuleNumber="1" />
+              <local:CasRule DisplayName="Rule True" sap2010:WorkflowViewState.IdRef="CasRule_5" RuleNumber="1" />
             </Transition.Trigger>
             <Transition.To>
               <State x:Name="__ReferenceID3" DisplayName="Proposal" sap2010:WorkflowViewState.IdRef="State_5">
                 <State.Entry>
-                  <local:CasAdvertiseEvent EventId="Enter-decision" sap2010:WorkflowViewState.IdRef="CasAdvertiseEvent_2" />
+                  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_2">
+                    <local:CasAdvertiseEvent DisplayName="Event Print Proposal" EventId="PRINT-PROPOSAL" sap2010:WorkflowViewState.IdRef="CasAdvertiseEvent_2" />
+                    <local:CasConsequenceStartTask DisplayName="EndTask consequence" sap2010:WorkflowViewState.IdRef="CasConsequenceStartTask_1" RuleID="1" TaskId="ACCQUIRE-DEAL-DATA" />
+                  </Sequence>
                 </State.Entry>
                 <State.Transitions>
                   <Transition DisplayName="Accept" sap2010:WorkflowViewState.IdRef="Transition_3">
@@ -62,7 +65,7 @@
                     <Transition.To>
                       <State x:Name="__ReferenceID2" DisplayName="Accepted" sap2010:WorkflowViewState.IdRef="State_3">
                         <State.Entry>
-                          <local:CasAdvertiseEvent EventId="Transfer-to-back" sap2010:WorkflowViewState.IdRef="CasAdvertiseEvent_3" />
+                          <local:CasAdvertiseEvent DisplayName="Event Accept Deal" EventId="ACCEPT-DEAL" sap2010:WorkflowViewState.IdRef="CasAdvertiseEvent_3" />
                         </State.Entry>
                         <State.Transitions>
                           <Transition DisplayName="Transfer to back" sap2010:WorkflowViewState.IdRef="Transition_2">
@@ -72,12 +75,12 @@
                             <Transition.To>
                               <State x:Name="__ReferenceID4" DisplayName="Transferred" sap2010:WorkflowViewState.IdRef="State_2">
                                 <State.Entry>
-                                  <local:CasAdvertiseEvent EventId="Colse-Deal" sap2010:WorkflowViewState.IdRef="CasAdvertiseEvent_6" />
+                                  <local:CasAdvertiseEvent DisplayName="Event Transfer to Back" EventId="TRANSFER-TO-BACK" sap2010:WorkflowViewState.IdRef="CasAdvertiseEvent_6" />
                                 </State.Entry>
                                 <State.Transitions>
                                   <Transition DisplayName="Close" sap2010:WorkflowViewState.IdRef="Transition_1">
                                     <Transition.Trigger>
-                                      <local:CasRule sap2010:WorkflowViewState.IdRef="CasRule_7" RuleNumber="1" />
+                                      <local:CasRule DisplayName="Rule True" sap2010:WorkflowViewState.IdRef="CasRule_7" RuleNumber="1" />
                                     </Transition.Trigger>
                                     <Transition.To>
                                       <State x:Name="__ReferenceID0" DisplayName="Final" sap2010:WorkflowViewState.IdRef="State_1" IsFinal="True" />
@@ -98,12 +101,12 @@
                     <Transition.To>
                       <State x:Name="__ReferenceID5" DisplayName="Declined" sap2010:WorkflowViewState.IdRef="State_4">
                         <State.Entry>
-                          <local:CasAdvertiseEvent EventId="Close-deal" sap2010:WorkflowViewState.IdRef="CasAdvertiseEvent_5" />
+                          <local:CasAdvertiseEvent DisplayName="Event Decline Deal" EventId="DECLINE-DEAL" sap2010:WorkflowViewState.IdRef="CasAdvertiseEvent_5" />
                         </State.Entry>
                         <State.Transitions>
                           <Transition DisplayName="Close" sap2010:WorkflowViewState.IdRef="Transition_4">
                             <Transition.Trigger>
-                              <local:CasRule sap2010:WorkflowViewState.IdRef="CasRule_8" RuleNumber="1" />
+                              <local:CasRule DisplayName="Rule True" sap2010:WorkflowViewState.IdRef="CasRule_8" RuleNumber="1" />
                             </Transition.Trigger>
                             <Transition.To>
                               <x:Reference>__ReferenceID0</x:Reference>
@@ -139,7 +142,7 @@
     <x:Reference>__ReferenceID2</x:Reference>
     <x:Reference>__ReferenceID4</x:Reference>
     <x:Reference>__ReferenceID5</x:Reference>
-    <sads:DebugSymbol.Symbol>d0dDOlxEYXRlblxHaXRIdWJcQ2FzRmluaXRlU3RhdGVcQ2FzRmluaXRlU3RhdGVTYW1wbGVcU2FtcGxlV29ya2Zsb3cueGFtbBUmA48BEgIBASgHeQ8CARVTJ1OVAQIBEzUPdRcCAQ4/F1sfAgEKSR9XJwIBBmMXcR8CAQIqCy0WAgEYMg8yWwIBFzcTN30CARI8Fzx8AgERYBdgZQIBEEEbQYcBAgENRh9GawIBDEsjS4kBAgEJUCdQcwIBCGUbZYEBAgEFah9qawIBBCsNK3gCARssDSyvAQIBGSyYASysAQIBGg==</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d0dDOlxEYXRlblxHaXRIdWJcQ2FzRmluaXRlU3RhdGVcQ2FzRmluaXRlU3RhdGVTYW1wbGVcU2FtcGxlV29ya2Zsb3cueGFtbBgmA5IBEgIBASgHfA8CARhWJ1aVAQIBFjUPeBcCAQ5CF14fAgEKTB9aJwIBBmYXdB8CAQIqCy0WAgEbMg8ycwIBGjcTOh4CARI/Fz98AgERYxdjZQIBEEQbRKIBAgENSR9JawIBDE4jTrQBAgEJUydTiwECAQhoG2ikAQIBBW0fbYMBAgEEKw0rnAECAR4sDSytAQIBHDgVOKIBAgEVORU5uwECARMslgEsqgECAR05pAE5uAECARQ=</sads:DebugSymbol.Symbol>
   </StateMachine>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -154,6 +157,14 @@
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="CasRule_5" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="CasAdvertiseEvent_2" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="CasConsequenceStartTask_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="222,208">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="CasRule_1" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="CasAdvertiseEvent_3" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="CasRule_6" sap:VirtualizedContainerService.HintSize="200,22" />
@@ -247,7 +258,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="State_5" sap:VirtualizedContainerService.HintSize="326,499">
+      <sap2010:ViewStateData Id="State_5" sap:VirtualizedContainerService.HintSize="326,597">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">13,299.333333333333</av:Point>

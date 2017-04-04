@@ -11,7 +11,7 @@ namespace CasFiniteStateSample
         protected override void Execute(CodeActivityContext context)
         {
             string tid = context.GetValue(TaskId);
-            Console.WriteLine("Activate Task {0} if Rule {1} is true", tid, RuleID);
+            Console.WriteLine("{2} : {0}, if R{1} is true", tid, RuleID, DisplayName);
         }
     }
 

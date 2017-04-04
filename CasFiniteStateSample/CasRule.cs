@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Activities;
 using System.Activities.Statements;
 using System.Collections.Generic;
@@ -28,12 +29,15 @@ namespace CasFiniteStateSample
 
             var parent = ParentOf(this);
             var transitions = Transitions(parent);
-            foreach(var t in transitions)
+            foreach (var t in transitions)
             {
                 if (t.Trigger == this)
                 {
                     var to = t.To;
-                    var advertisedEvent = to.Entry as CasAdvertiseEvent;
+                    var entry = to.Entry;
+                    var advertisedEvent = to.Entry is Sequence seq ? 
+                        seq.Activities.OfType<CasAdvertiseEvent>().FirstOrDefault() 
+                        : to.Entry as CasAdvertiseEvent;
                     if (advertisedEvent != null)
                         bmn = string.Format("->{0,-12} on event {1,-20} only if R{2,-4}", to.DisplayName, advertisedEvent.EventId, RuleNumber);
                 }
@@ -73,7 +77,7 @@ namespace CasFiniteStateSample
 
         public void OnResumeBookmark(NativeActivityContext context, Bookmark bm, object value)
         {
-            Console.WriteLine("Received {0}", bm.Name);
+            //Console.WriteLine("Received {0}", bm.Name);
         }
 
         public override string ToString()
