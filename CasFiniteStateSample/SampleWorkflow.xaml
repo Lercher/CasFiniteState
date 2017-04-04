@@ -46,6 +46,9 @@
         </State.Entry>
         <State.Transitions>
           <Transition DisplayName="Make Proposal" sap2010:WorkflowViewState.IdRef="Transition_6">
+            <Transition.Trigger>
+              <local:CasRule sap2010:WorkflowViewState.IdRef="CasRule_5" RuleNumber="1" />
+            </Transition.Trigger>
             <Transition.To>
               <State x:Name="__ReferenceID3" DisplayName="Proposal" sap2010:WorkflowViewState.IdRef="State_5">
                 <State.Entry>
@@ -63,6 +66,9 @@
                         </State.Entry>
                         <State.Transitions>
                           <Transition DisplayName="Transfer to back" sap2010:WorkflowViewState.IdRef="Transition_2">
+                            <Transition.Trigger>
+                              <local:CasRule RuleNumber="1" sap2010:WorkflowViewState.IdRef="CasRule_6" />
+                            </Transition.Trigger>
                             <Transition.To>
                               <State x:Name="__ReferenceID4" DisplayName="Transferred" sap2010:WorkflowViewState.IdRef="State_2">
                                 <State.Entry>
@@ -70,6 +76,9 @@
                                 </State.Entry>
                                 <State.Transitions>
                                   <Transition DisplayName="Close" sap2010:WorkflowViewState.IdRef="Transition_1">
+                                    <Transition.Trigger>
+                                      <local:CasRule RuleNumber="1" sap2010:WorkflowViewState.IdRef="CasRule_7" />
+                                    </Transition.Trigger>
                                     <Transition.To>
                                       <State x:Name="__ReferenceID0" DisplayName="Final" sap2010:WorkflowViewState.IdRef="State_1" IsFinal="True" />
                                     </Transition.To>
@@ -92,7 +101,14 @@
                           <local:CasAdvertiseEvent EventId="Close-deal" sap2010:WorkflowViewState.IdRef="CasAdvertiseEvent_5" />
                         </State.Entry>
                         <State.Transitions>
-                          <Transition DisplayName="Close" sap2010:WorkflowViewState.IdRef="Transition_4" To="{x:Reference __ReferenceID0}" />
+                          <Transition DisplayName="Close" sap2010:WorkflowViewState.IdRef="Transition_4">
+                            <Transition.Trigger>
+                              <local:CasRule RuleNumber="1" sap2010:WorkflowViewState.IdRef="CasRule_8" />
+                            </Transition.Trigger>
+                            <Transition.To>
+                              <x:Reference>__ReferenceID0</x:Reference>
+                            </Transition.To>
+                          </Transition>
                         </State.Transitions>
                       </State>
                     </Transition.To>
@@ -123,7 +139,7 @@
     <x:Reference>__ReferenceID2</x:Reference>
     <x:Reference>__ReferenceID4</x:Reference>
     <x:Reference>__ReferenceID5</x:Reference>
-    <sads:DebugSymbol.Symbol>d0dDOlxEYXRlblxHaXRIdWJcQ2FzRmluaXRlU3RhdGVcQ2FzRmluaXRlU3RhdGVTYW1wbGVcU2FtcGxlV29ya2Zsb3cueGFtbBEmA38SAgEBKAdpDwIBFUonSpUBAgETMg9lFwIBDjwXUh8CAQpDH04nAgEGWhdhHwIBAioLLRYCARg0EzR9AgESORc5ZQIBEVcXV2UCARA+Gz6HAQIBDUUjRYkBAgEJXBtcgQECAQUrDSt4AgEbLA0srwECARksmAEsrAECARo=</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d0dDOlxEYXRlblxHaXRIdWJcQ2FzRmluaXRlU3RhdGVcQ2FzRmluaXRlU3RhdGVTYW1wbGVcU2FtcGxlV29ya2Zsb3cueGFtbBUmA48BEgIBASgHeQ8CARVTJ1OVAQIBEzUPdRcCAQ4/F1sfAgEKSR9XJwIBBmMXcR8CAQIqCy0WAgEYMg8yWwIBFzcTN30CARI8FzxlAgERYBdgZQIBEEEbQYcBAgENRh9GawIBDEsjS4kBAgEJUCdQcwIBCGUbZYEBAgEFah9qawIBBCsNK3gCARssDSyvAQIBGSyYASysAQIBGg==</sads:DebugSymbol.Symbol>
   </StateMachine>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -136,10 +152,13 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CasRule_5" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="CasAdvertiseEvent_2" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="CasRule_1" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="CasAdvertiseEvent_3" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="CasRule_6" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="CasAdvertiseEvent_6" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="CasRule_7" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="State_1" sap:VirtualizedContainerService.HintSize="114,61">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -169,7 +188,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Transition_2" sap:VirtualizedContainerService.HintSize="431.333333333333,522">
+      <sap2010:ViewStateData Id="Transition_2" sap:VirtualizedContainerService.HintSize="430,507">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:PointCollection x:Key="ConnectorLocation">397,320 427,320 427,326.133333333333 573,326.133333333333</av:PointCollection>
@@ -199,7 +218,8 @@
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="CasRule_2" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="CasAdvertiseEvent_5" sap:VirtualizedContainerService.HintSize="200,22" />
-      <sap2010:ViewStateData Id="Transition_4">
+      <sap2010:ViewStateData Id="CasRule_8" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Transition_4" sap:VirtualizedContainerService.HintSize="430,507">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:PointCollection x:Key="ConnectorLocation">267,513.066666666667 607.2,513.066666666667 607.2,559.333333333333</av:PointCollection>
@@ -208,7 +228,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="State_4" sap:VirtualizedContainerService.HintSize="114,61">
+      <sap2010:ViewStateData Id="State_4" sap:VirtualizedContainerService.HintSize="326,472">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">153,479.333333333333</av:Point>
@@ -236,7 +256,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Transition_6" sap:VirtualizedContainerService.HintSize="430,509">
+      <sap2010:ViewStateData Id="Transition_6" sap:VirtualizedContainerService.HintSize="430,507">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:PointCollection x:Key="ConnectorLocation">64.3,200.666666666667 64.3,230.666666666667 75.7,230.666666666667 75.7,299.333333333333</av:PointCollection>

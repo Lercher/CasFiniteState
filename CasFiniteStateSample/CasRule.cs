@@ -24,7 +24,7 @@ namespace CasFiniteStateSample
         protected override void Execute(NativeActivityContext context)
         {
             Console.WriteLine("Using rule R{0:n0}", RuleNumber);
-            var bmn = string.Format("Rule-{0}", RuleNumber); // preliminary
+            var bmn = string.Format("Rule-{0} / no (more) event", RuleNumber); // preliminary
 
             var parent = ParentOf(this);
             var transitions = Transitions(parent);
