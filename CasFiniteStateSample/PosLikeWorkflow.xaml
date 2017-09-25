@@ -42,7 +42,7 @@
           <Sequence sap2010:WorkflowViewState.IdRef="Sequence_2" />
         </State.Entry>
         <State.Exit>
-          <Pick sap2010:WorkflowViewState.IdRef="Pick_2">
+          <Pick DisplayName="Events (PickActivity)" sap2010:WorkflowViewState.IdRef="Pick_2">
             <PickBranch DisplayName="Branch1" sap2010:WorkflowViewState.IdRef="PickBranch_5">
               <PickBranch.Trigger>
                 <Delay sap2010:WorkflowViewState.IdRef="Delay_7">
@@ -90,6 +90,23 @@
                 </State.Transitions>
               </State>
             </Transition.To>
+            <Transition.Action>
+              <Sequence>
+                <WriteLine>
+                  <InArgument x:TypeArguments="x:String">
+                    <Literal x:TypeArguments="x:String" Value="" />
+                  </InArgument>
+                  <sap2010:WorkflowViewState.IdRef>WriteLine_5</sap2010:WorkflowViewState.IdRef>
+                </WriteLine>
+                <WriteLine>
+                  <InArgument x:TypeArguments="x:String">
+                    <Literal x:TypeArguments="x:String" Value="" />
+                  </InArgument>
+                  <sap2010:WorkflowViewState.IdRef>WriteLine_6</sap2010:WorkflowViewState.IdRef>
+                </WriteLine>
+                <sap2010:WorkflowViewState.IdRef>Sequence_3</sap2010:WorkflowViewState.IdRef>
+              </Sequence>
+            </Transition.Action>
           </Transition>
           <Transition DisplayName="Stornieren" sap2010:WorkflowViewState.IdRef="Transition_3" To="{x:Reference __ReferenceID0}" />
           <Transition DisplayName="Timeout" sap2010:WorkflowViewState.IdRef="Transition_1">
@@ -116,7 +133,7 @@
     <State DisplayName="_Global" sap2010:WorkflowViewState.IdRef="State_4">
       <State.Exit>
         <Pick sap2010:WorkflowViewState.IdRef="Pick_1">
-          <PickBranch DisplayName="Branch1" sap2010:WorkflowViewState.IdRef="PickBranch_1">
+          <PickBranch DisplayName="#Global" sap2010:WorkflowViewState.IdRef="PickBranch_1">
             <PickBranch.Trigger>
               <Delay sap2010:WorkflowViewState.IdRef="Delay_2">
                 <InArgument x:TypeArguments="x:TimeSpan">
@@ -125,7 +142,7 @@
               </Delay>
             </PickBranch.Trigger>
           </PickBranch>
-          <PickBranch DisplayName="Branch2" sap2010:WorkflowViewState.IdRef="PickBranch_2">
+          <PickBranch DisplayName="#Change" sap2010:WorkflowViewState.IdRef="PickBranch_2">
             <PickBranch.Trigger>
               <Delay sap2010:WorkflowViewState.IdRef="Delay_3">
                 <InArgument x:TypeArguments="x:TimeSpan">
@@ -134,7 +151,7 @@
               </Delay>
             </PickBranch.Trigger>
           </PickBranch>
-          <PickBranch sap2010:WorkflowViewState.IdRef="PickBranch_3">
+          <PickBranch DisplayName="#x" sap2010:WorkflowViewState.IdRef="PickBranch_3">
             <PickBranch.Trigger>
               <Delay sap2010:WorkflowViewState.IdRef="Delay_4">
                 <InArgument x:TypeArguments="x:TimeSpan">
@@ -143,7 +160,7 @@
               </Delay>
             </PickBranch.Trigger>
           </PickBranch>
-          <PickBranch sap2010:WorkflowViewState.IdRef="PickBranch_4">
+          <PickBranch DisplayName="#y" sap2010:WorkflowViewState.IdRef="PickBranch_4">
             <PickBranch.Trigger>
               <Delay sap2010:WorkflowViewState.IdRef="Delay_5">
                 <InArgument x:TypeArguments="x:TimeSpan">
@@ -156,7 +173,7 @@
       </State.Exit>
     </State>
     <State DisplayName="Container" sap2010:WorkflowViewState.IdRef="State_5" />
-    <sads:DebugSymbol.Symbol>d0hDOlxEYXRlblxHaXRIdWJcQ2FzRmluaXRlU3RhdGVcQ2FzRmluaXRlU3RhdGVTYW1wbGVcUG9zTGlrZVdvcmtmbG93LnhhbWwZJgOgARICAQEoB28PAgEOVxdXiAECAQxMD1sXAgECKgsqRAIBHi0LQBICARdFD0kXAgEVYQ9lFwIBEmsPa1kCARBOE1IeAgEFLg02GgIBGzcNPxoCARhHE0dqAgEWYxNjaQIBE2tNa1YCARFPFU9ZAgEKUBVQWQIBCFEVUVkCAQYwETQZAgEcORE9GQIBGU9TT1YCAQtQU1BWAgEJUVNRVgIBBzIVMmICAR07FTtiAgEa</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d0hDOlxEYXRlblxHaXRIdWJcQ2FzRmluaXRlU3RhdGVcQ2FzRmluaXRlU3RhdGVTYW1wbGVcUG9zTGlrZVdvcmtmbG93LnhhbWweJgOxARICAQEoB4ABDwIBDlcXV4gBAgEMTA9bFwIBAioLKkQCASMtC0ASAgEcRQ9JFwIBGl4PbBoCARVyD3YXAgESfA98WQIBEE4TUh4CAQUuDTYaAgEgNw0/GgIBHUcTR2oCARtfEWQdAgEYZRFqHQIBFnQTdGkCARN8TXxWAgERTxVPWQIBClAVUFkCAQhRFVFZAgEGMBE0GQIBITkRPRkCAR5hFWFEAgEZZxVnRAIBF09TT1YCAQtQU1BWAgEJUVNRVgIBBzIVMmICASI7FTtiAgEf</sads:DebugSymbol.Symbol>
   </StateMachine>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -171,7 +188,14 @@
       <sap2010:ViewStateData Id="PickBranch_5" sap:VirtualizedContainerService.HintSize="230,318" />
       <sap2010:ViewStateData Id="Delay_8" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="PickBranch_6" sap:VirtualizedContainerService.HintSize="230,318" />
-      <sap2010:ViewStateData Id="Pick_2" sap:VirtualizedContainerService.HintSize="614,364" />
+      <sap2010:ViewStateData Id="Pick_2" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="Delay_6" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="WriteLine_2" sap:VirtualizedContainerService.HintSize="210,62" />
       <sap2010:ViewStateData Id="WriteLine_3" sap:VirtualizedContainerService.HintSize="210,62" />
@@ -213,6 +237,16 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WriteLine_5" sap:VirtualizedContainerService.HintSize="210,62" />
+      <sap2010:ViewStateData Id="WriteLine_6" sap:VirtualizedContainerService.HintSize="210,62" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="Transition_2" sap:VirtualizedContainerService.HintSize="430,507">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -242,7 +276,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="State_3" sap:VirtualizedContainerService.HintSize="114,61">
+      <sap2010:ViewStateData Id="State_3" sap:VirtualizedContainerService.HintSize="326,526">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">13,159.5</av:Point>
@@ -288,7 +322,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="Pick_1" sap:VirtualizedContainerService.HintSize="1154,364" />
-      <sap2010:ViewStateData Id="State_4" sap:VirtualizedContainerService.HintSize="1180,702">
+      <sap2010:ViewStateData Id="State_4" sap:VirtualizedContainerService.HintSize="114,61">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">173,9.5</av:Point>
