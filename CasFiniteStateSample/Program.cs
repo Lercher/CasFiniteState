@@ -1,15 +1,40 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Activities;
 using System.Activities.Statements;
+using System.Activities.XamlIntegration; // ActivityXamlServices
 
 namespace CasFiniteStateSample
 {
     class Program
     {
+
+        public static Activity LoadActivityFrom(FileInfo xaml)
+        {
+            // see http://stackoverflow.com/questions/6098077/rehosted-workflow-designer-default-imported-namespaces
+            using (var rs = xaml.OpenRead())
+            using (var xr = new System.Xaml.XamlXmlReader(rs))
+            using (var br = ActivityXamlServices.CreateBuilderReader(xr))
+            {
+                var ab = System.Xaml.XamlServices.Load(br) as ActivityBuilder;
+                return ab.Implementation;
+            }
+            /*
+            * don't just return ActivityXamlServices.Load(rs) because, if you do and you .Load() this Activity to a WorkflowDesigner instance wd
+            * you will get a dialog that states a null reference exception in System.Activities.Presentation.View.ImportDesigner.OnContextChanged()
+            * and this is because wd.Context.Services.GetService<System.Activities.Presentation.Services.ModelService>().Root.Properties["Imports"] is null in 
+            * https://referencesource.microsoft.com/#System.Activities.Presentation/System.Activities.Presentation/System/Activities/Presentation/View/ImportDesigner.xaml.cs,472d4082845d64b6,references
+            * void OnContextChanged() at
+            * this.importsModelItem = modelService.Root.Properties[NamespaceListPropertyDescriptor.ImportCollectionPropertyName].Collection
+            * N.B.: NamespaceListPropertyDescriptor.ImportCollectionPropertyName is "Imports"
+            */
+        }
+
         static void Main(string[] args)
         {
-            Activity wf = new SampleWorkflow();
+            var pos = (StateMachine) LoadActivityFrom(new FileInfo(@"\daten\github\casfinitestate\casfinitestatesample\poslikeworkflow.xaml"));
+            var wf = new SampleWorkflow();
             var app = new WorkflowApplication(wf);
 
             // http://blogs.msmvps.com/theproblemsolver/2011/01/07/doing-synchronous-workflow-execution-using-the-workflowapplication/
