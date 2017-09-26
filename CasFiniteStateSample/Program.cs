@@ -34,6 +34,9 @@ namespace CasFiniteStateSample
         static void Main(string[] args)
         {
             var pos = (StateMachine) LoadActivityFrom(new FileInfo(@"\daten\github\casfinitestate\casfinitestatesample\poslikeworkflow.xaml"));
+            using (var fs = File.OpenWrite("saved.xaml"))
+                System.Xaml.XamlServices.Save(fs, pos);
+
             var wf = new SampleWorkflow();
             var app = new WorkflowApplication(wf);
 
